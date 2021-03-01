@@ -27,6 +27,7 @@ def split_to_pair_of_chars(text):
 
 split_to_pair_of_chars('abcdefghijk')
 
+
 '''
 Given an array of integers, find the one that appears an odd number of times.
 
@@ -50,27 +51,60 @@ def find_it1(seq):
         if seq.count(x) % 2:
             return x
 
+
 def find_it3(seq):
     return [x for x in seq if seq.count(x) % 2][0]
 
 
 find_it([2, 2, 2, 2, 4, 4, 6, 6, 6])
-print(find_it3([20, 1, -1, 2, -2, 3, 3, 5, 5, 1, 2, 4, 20, 4, -1, -2, 5]))
+find_it3([20, 1, -1, 2, -2, 3, 3, 5, 5, 1, 2, 4, 20, 4, -1, -2, 5])
 find_it1([1, 1, 2, -2, 5, 2, 4, 4, -1, -2, 5])
 find_it1([20, 1, 1, 2, 2, 3, 3, 5, 5, 4, 20, 4, 5])
 find_it1([10])
 find_it1([1, 1, 1, 1, 1, 1, 10, 1, 1, 1, 1])
 find_it1([5, 4, 3, 2, 1, 5, 4, 3, 2, 10, 10])
 
+'''
+Given two arrays of strings a1 and a2 return a sorted array r in lexicographical
+order of the strings of a1 which are substrings of strings of a2.
+
+#Example 1: a1 = ["arp", "live", "strong"]
+
+a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+
+returns ["arp", "live", "strong"]
+
+#Example 2: a1 = ["tarp", "mice", "bull"]
+
+a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+
+returns []
+
+Notes:
+Arrays are written in "general" notation. See "Your Test Cases" for examples in your language.
+
+In Shell bash a1 and a2 are strings. The return is a string where words are separated by commas.
+
+Beware: r must be without duplicates.
+Don't mutate the inputs.
+'''
+
+a1 = ["arp", "live", "strong", "rp"]
+
+a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
 
 
+def in_array(a1, a2):
+    r = []
+    for x in a1:
+        for y in a2:
+            if x in y and x not in r:
+                r.append(x)
+    return sorted(r)
 
 
-
-
-
-
-
+def in_array2(a1, a2):
+    return sorted([sub for sub in a1 if any(sub in s for s in a2)])
 
 
 
